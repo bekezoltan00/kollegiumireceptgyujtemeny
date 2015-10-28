@@ -50,7 +50,7 @@ Egy recept törlésének pontos menete:
   - /add
 
 ### Felhasználói felület:
-![Kinézet](docs/images/kinezet.png)
+![Kinézet](docs/images/kinezet.PNG)
 
 ### Osztálymodell
 - Adatmodell
