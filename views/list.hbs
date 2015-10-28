@@ -1,0 +1,46 @@
+<h1>Receptek listája</h1>
+<form class="form-horizontal col-lg-8 col-lg-offset-2"
+      method="get" action="/list">
+    <div class="form-group">
+      <div class="col-lg-10">
+        <input type="search" class="form-control" 
+               name="kereses" id="kereses" value="{{kereses}}"
+               placeholder="Írja le, hogy milyen receptet keres..."></textarea>
+      </div>
+      <div class="col-lg-2">
+            <button type="submit" class="btn btn-info pull-left">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+      </div>
+    </div>
+</form>
+<table class="table table-striped">
+    <tr>
+        <th>Beküldés ideje</th>
+        <th>Recept neve</th>
+        <th>Recept nehézsége</th>
+        <th>Recept leírása</th>
+        <th class="text-right">Műveletek</th>
+    </tr>
+    {{#each receptek as |recept|}}
+    <tr class="text-{{#if recept.kesz}}success{{else}}warning{{/if}}">
+        <td>{{recept.datum}}</td>
+        <td>{{recept.nev}}</td>
+        <td>{{recept.nehezseg}}</td>
+        <td>{{recept.leiras}}</td>
+        <td class="text-right">
+            {{#unless recept.kesz}}
+            <a class="btn btn-sm btn-success" href="/ready/{{recept.id}}">
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
+            {{/unless}}
+            <a class="btn btn-sm btn-info" href="/recipe/{{recept.id}}">
+                <span class="glyphicon glyphicon-eye-open"></span>
+            </a>
+            <a class="btn btn-sm btn-danger" href="/delete/{{recept.id}}">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+        </td>
+    </tr>
+    {{/each}}
+</table> 

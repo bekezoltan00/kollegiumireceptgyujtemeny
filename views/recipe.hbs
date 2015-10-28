@@ -1,0 +1,36 @@
+<h1>Recept módosítása</h1>
+<form class="form-horizontal col-lg-8 col-lg-offset-2"
+      method="post" action="/recipe/{{recept.id}}">
+    <div class="form-group">
+      <label for="leiras" class="col-lg-2 control-label">Recept neve: </label>
+      <div class="col-lg-10">
+        <textarea class="form-control" 
+               name="nev" id="nev">{{recept.nev}}</textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="leiras" class="col-lg-2 control-label">Recept leírása: </label>
+      <div class="col-lg-10">
+        <textarea class="form-control" 
+               name="leiras" id="leiras">{{recept.leiras}}</textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="leiras" class="col-lg-2 control-label">Recept nehézsége: </label>
+      <div class="col-lg-10">
+        <select class="form-control" name="nehezseg" id="nehezseg">
+            <option>Könnyű (1)</option>
+            <option>Közepes (2)</option>
+            <option>Haladó (3)</option>
+            <option>Nehéz (4)</option>
+            <option>Rendkívül nehéz (5)</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default pull-left">Mégse</button>
+        <button type="submit" class="btn btn-success pull-right">Módosítások mentése</button>
+      </div>
+    </div>
+</form>
