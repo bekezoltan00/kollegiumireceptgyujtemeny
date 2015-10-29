@@ -23,6 +23,17 @@
         "createdAt": "2015-10-28T15:52:12.070Z",
         "updatedAt": "2015-10-28T15:52:12.070Z",
         "id": 1
+      },
+      {
+        "surname": "test",
+        "forename": "test",
+        "neptun": "test",
+        "password": "$2a$10$KwCL/TKwbHxOmG4j8WL1vOhrbnQnGqinnK78Km1jO43avupVZVkwO",
+        "avatar": "",
+        "role": "riporter",
+        "createdAt": "2015-10-29T20:24:37.062Z",
+        "updatedAt": "2015-10-29T20:24:37.062Z",
+        "id": 2
       }
     ]
   },
@@ -107,7 +118,7 @@
       "id": 9
     },
     "user": {
-      "id": 1
+      "id": 2
     }
   }
 }
