@@ -60,8 +60,8 @@ router.route('/add')
         }); 
     })
     .post(ensureAuthenticated, function (req, res) {
-        req.checkBody('nev').notEmpty().withMessage('Kihagytál valamit!');
-        req.checkBody('leiras').notEmpty().withMessage('Kihagytál valamit!');
+        req.checkBody('nev').notEmpty().withMessage('Hiányzik a recept neve!');
+        req.checkBody('leiras').notEmpty().withMessage('Hiányzik a recept leírása!');
         if (req.validationErrors()) {
             req.validationErrors().forEach(function (error) {
                 req.flash('error', error.msg);
@@ -75,7 +75,7 @@ router.route('/add')
             })
             .then(function () {
                 req.flash('success', 'Recept sikeresen létrehozva.');
-                res.redirect('/add'); 
+                res.redirect('/list'); 
             });
         }
     });
@@ -114,28 +114,33 @@ router.route('/ready/:id')
         }, {
             kesz: true
         }).then(function () {
+            req.flash('success', 'Recept sikeresen elfogadva.');
             res.redirect('/list');  
         });
     });
-    
+
+var recipe_id;
+
 router.route('/recipe/:id')
     .get(ensureAuthenticated, function (req, res) {
+        recipe_id = req.params.id;
         req.app.models.recipe.findOne({
             id: req.params.id
         }).then(function (recept) {
             res.render('recipe', {
+                uzenetek: req.flash(),
                 recept: recept
             })
         });
     })
     .post(ensureAuthenticated, function (req, res) {
-        req.checkBody('nev').notEmpty().withMessage('Kihagytál valamit!');
-        req.checkBody('leiras').notEmpty().withMessage('Kihagytál valamit!');
+        req.checkBody('nev').notEmpty().withMessage('Hiányzik a recept neve!');
+        req.checkBody('leiras').notEmpty().withMessage('Hiányzik a recept leírása!');
         if (req.validationErrors()) {
             req.validationErrors().forEach(function (error) {
                 req.flash('error', error.msg);
             });
-            res.redirect('/recipe/:id');
+            res.redirect('/recipe/'+recipe_id);
         } else {
             req.app.models.recipe.create({
                 nev: req.body.nev,
